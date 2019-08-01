@@ -2,7 +2,6 @@ D:\Projetos\CentralTask\bin\Debug\netcoreapp2.2\CentralTask.deps.json
 D:\Projetos\CentralTask\bin\Debug\netcoreapp2.2\CentralTask.runtimeconfig.json
 D:\Projetos\CentralTask\bin\Debug\netcoreapp2.2\CentralTask.runtimeconfig.dev.json
 D:\Projetos\CentralTask\bin\Debug\netcoreapp2.2\CentralTask.dll
-D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.csprojAssemblyReference.cache
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.csproj.CoreCompileInputs.cache
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.RazorAssemblyInfo.cache
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.RazorAssemblyInfo.cs
@@ -28,3 +27,5 @@ D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.dll
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.pdb
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.csproj.CopyComplete
 D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\Razor\Views\OrdemServico\Index.g.cshtml.cs
+D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\CentralTask.csprojAssemblyReference.cache
+D:\Projetos\CentralTask\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs

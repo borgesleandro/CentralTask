@@ -1,0 +1,103 @@
+﻿.rm-multiselectListaUm
+{
+	width: auto;
+	height: 360px; 
+	margin-bottom: 110px;
+}
+
+.rm-column-lateralListaUm
+{
+	float: left;
+	width: 100%;	
+    /*width: 80%;*/	
+	height: 100%;
+}
+
+.rm-column-menuListaUm
+{
+	float: left;
+	height: 100%;
+	text-align: center;
+	/*margin-right: 10px;*/
+    margin-right: 0px;
+	padding-top: 50px;
+}
+
+.rm-column-menuListaUm  li
+{
+	list-item: none;
+	list-style: none;
+	padding: 3px;
+	margin-bottom: 8px;
+    margin-left: 0px !important;
+}
+
+.rm-column-menuListaUm li i{
+	cursor: pointer;
+}
+
+
+.rm-columnListaUm, .rm-column-searchListaUm
+{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: solid 1px #CCC; 
+}
+
+.rm-columnListaUm
+{
+	background: #FFF;
+	width: auto;
+	margin-right: 2px;
+	padding: 2px;
+	height: 100%;
+	overflow: hidden;
+	overflow-y: auto;	
+}
+
+/*.rm-column-searchListaUm
+{
+	width: auto;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: #FFF;
+}*/
+
+.rm-column-searchListaUm input
+{
+	border: none;
+	width: 100%;
+	outline: none;
+}
+
+.rm-column-itemListaUm
+{
+	background-color: #FFF;
+	border-bottom: solid 1px #EBEBEB;
+	padding: 3px;
+	cursor: default;
+}
+
+.rm-column-itemListaUm .rm-bt-actionListaUm
+{
+	float: right;
+	cursor: pointer;
+	margin-top: -5px;
+	font-weight: bold;
+	/*font-size: 15px;*/
+}
+.rm-column-itemListaUm:hover
+{
+	background-color: #EBEBEB;
+}
+
+.rm-column-itemListaUm:active 
+{
+	opacity:0.8;
+	-moz-opacity: 0.8;
+	filter: alpha(opacity=8);
+	cursor: move;
+}
