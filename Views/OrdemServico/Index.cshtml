@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CentralTask.Models.OrdemServicoModel>
+
+@{
+    ViewData["Title"] = "Ordem de Servico ";
+}
+
+<h1>OrdemServicoList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEmissao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRecepcao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodContrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodOperador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeOperador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumMedicao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEmissao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRecepcao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodContrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodOperador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeOperador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumMedicao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
