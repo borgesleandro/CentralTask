@@ -1,0 +1,29 @@
+﻿/************************************
+    Usuário para Aprovação e Upload
+*************************************/
+
+#corpo-aprov, #corpo-up  { width:100%; }
+
+#coluna1-aprov, #coluna1-up { float: left; width: 380px; }
+#coluna2-aprov, #coluna2-up { float:left; }
+#coluna3-aprov, #coluna3-up { float: left; width: 380px; }
+
+#div_FiltroUsuariosAprovacao, #div_FiltroUsuariosUp { margin-top:1px; }
+
+#btn_incluirUsuariAprovacao, #btn_incluirUsuariUp { margin-top: 25px; }
+
+#btn_incluirTodosUsuariAprovacao, #btn_incluirTodosUsuariUp { margin-top:1px; }
+
+#btn_RetirarUsuariAprovacao, #btn_RetirarUsuariUp { margin-top:1px; }
+
+#btn_RetirarTodosUsuariAprovacao, #btn_RetirarTodosUsuariUp { margin-top:1px; }
+
+#FiltroUsuariosAprovacao, #FiltroUsuariosUp { margin-left: 20px; margin-top: 1px; width: 350px; }
+
+#div_ListaUsuariosAprovacao, #div_ListaUsuariosUp { margin-top:1px; } 
+
+#ListaUsuariosAprovacao, #ListaUsuariosUp { margin-left: 10px; margin-top: 1px; width: 350px; }
+
+.divButtonsUpDown { margin-left: 20px; margin-top: 10px; }
+
+.divButtonsUpDown a, .divButtonsUpDown a:hover{ color: darkblue; font-weight: bold; font-size: 0.9em; }

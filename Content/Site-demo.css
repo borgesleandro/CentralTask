@@ -1,0 +1,17 @@
+﻿.logo_cli 
+{ 
+    width: 130px; 
+    height: 60px; 
+    background-image:url(../Images/logo/logo_DESENV.jpg); 
+    display: inline-block; 
+}
+
+.corCliente 
+{
+    color: #008dd0 !important;
+}
+
+.fn-gantt .bar
+{
+    background-color: #00ffff !important;
+}
