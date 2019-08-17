@@ -49,17 +49,13 @@
         var tableLayout;
         var docRef;
 
+        const firestore = firebase.firestore();
+        const settings = {/* your settings... */ timestampsInSnapshots: true };
+        firestore.settings(settings);
+
         $(document).ready(function () {
-
-            //db = firebase.firestore();
-
-            const firestore = firebase.firestore();
-            const settings = {/* your settings... */ timestampsInSnapshots: true };
-            firestore.settings(settings);
-
             docRef = firestore.collection("solicitacao");
-          //  CarregarPagina(docRef);
-
+            CarregarPagina(docRef);
         });
 
         function AbrirModal(pNomeClass) {
@@ -188,7 +184,7 @@
                     <div class="col-md-2 text-right">
                         <div class="form-group" style="margin-top: 15px">
                             <label for=""></label>
-                            <asp:Button type="button" ID="btnNovo" class="btn btn-primary btn-bottom" Text="Nova O.S." runat="server" OnClientClick="NovaOS();" />&nbsp;&nbsp;&nbsp;
+                            <input type="button" onclick="NovaOS();" value="Nova O.S"  />
                         </div>
                     </div>
                 </div>
@@ -220,7 +216,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <asp:Button type="button" ID="btnFechaAddQuest" class="close" data-dismiss="modal" aria-label="Close" runat="server" Text="&times;"></asp:Button>
-                        <h4 class="modal-title" id="H2">Adicionar perguntas</h4>
+                        <h4 class="modal-title" id="H2">Cadastro de ordem de serviço</h4>
                     </div>
                 </div>
             </div>

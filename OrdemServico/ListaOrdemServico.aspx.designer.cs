@@ -31,15 +31,6 @@ namespace CentralTask.OrdemServico {
         protected global::System.Web.UI.WebControls.TextBox txtCodigo;
         
         /// <summary>
-        /// Controle btnNovo.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNovo;
-        
-        /// <summary>
         /// Controle A2.
         /// </summary>
         /// <remarks>
