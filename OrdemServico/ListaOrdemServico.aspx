@@ -10,7 +10,9 @@
 
     <script src='<%= ResolveUrl("~/Scripts/bootbox.min.js")%>'></script>
     <script src='<%= ResolveUrl("~/Scripts/bootbox.defaults.js")%>'></script>
- 
+    
+    <link rel="shortcut icon" href="Images/favicon.png" type="image/png" />
+    
    
 
     <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
@@ -34,6 +36,7 @@
             messagingSenderId: "902403607931",
             appId: "1:902403607931:web:28d9bb28216f811e"
         };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
@@ -48,9 +51,14 @@
 
         $(document).ready(function () {
 
-            db = firebase.firestore();
-            docRef = db.collection("solicitacao");
-            CarregarPagina(docRef);
+            //db = firebase.firestore();
+
+            const firestore = firebase.firestore();
+            const settings = {/* your settings... */ timestampsInSnapshots: true };
+            firestore.settings(settings);
+
+            docRef = firestore.collection("solicitacao");
+          //  CarregarPagina(docRef);
 
         });
 
@@ -180,7 +188,7 @@
                     <div class="col-md-2 text-right">
                         <div class="form-group" style="margin-top: 15px">
                             <label for=""></label>
-                            <asp:Button type="button" ID="btnNovo" class="btn btn-primary btn-bottom" Text="Nova O.S." runat="server" OnClientClick="return NovaOS();" />&nbsp;&nbsp;&nbsp;
+                            <asp:Button type="button" ID="btnNovo" class="btn btn-primary btn-bottom" Text="Nova O.S." runat="server" OnClientClick="NovaOS();" />&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
@@ -214,67 +222,9 @@
                         <asp:Button type="button" ID="btnFechaAddQuest" class="close" data-dismiss="modal" aria-label="Close" runat="server" Text="&times;"></asp:Button>
                         <h4 class="modal-title" id="H2">Adicionar perguntas</h4>
                     </div>
-                    <div class="modal-body row">
-                        <div class="col-md-12 col-xs-12">
-                            <div class="row well">
-                                <div class="col-md-1  col-md-short-right">
-                                    <div class="form-group">
-                                        <label for="">Código</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4  col-md-short-left">
-                                    <div class="form    -group">
-                                        <label for="">Pergunta</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3  col-md-short-left">
-                                    <div class="form-group">
-                                        <label for="">Tópico</label>
-                                        <asp:DropDownList class="form-control" ID="ddlTopicopesq" runat="server" ClientIDMode="Static">
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-md-short-left">
-                                    <div class="form-group">
-                                        <label for="">Tipo pergunta</label>
-                                        <asp:DropDownList class="form-control" ID="ddlTipopesq" runat="server" ClientIDMode="Static">
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-md-short-right">
-                                    <div class="form-group">
-                                        <label for="">Nível de dificuldade</label>
-                                        <asp:DropDownList class="form-control" ID="ddlNivelPesq" runat="server" ClientIDMode="Static">
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group" style="text-align: right">
-                                            <br />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12  col-xs-12">
-                                    <table id="tbResultAddPerg" class="table table-striped table-bordered table-hover table-condensed" border="0" cellspacing="0" cellpadding="0">
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-12  col-xs-12">
-                                <div class="form-group" style="text-align: right">
-                                    <br />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
-
-
 
     </div>
 

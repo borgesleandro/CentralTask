@@ -15,10 +15,10 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-     <link rel="shortcut icon" href="Images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="~/Content/themes/base/jquery.dataTables.css" />
     <link rel="stylesheet" href="~/Content/themes/Bootstrap_RNN/css/font-awesome.min.css?8" />
     <link rel="stylesheet" href="~/Content/themes/Bootstrap_RNN/css/bootstrap.css" />
+
 </head>
 <body>
     <form runat="server">
@@ -38,9 +38,6 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-
- 
-
 
                 <%--Site Scripts--%>
             </Scripts>
