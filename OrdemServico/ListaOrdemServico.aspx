@@ -10,11 +10,8 @@
 
     <script src='<%= ResolveUrl("~/Scripts/bootbox.min.js")%>'></script>
     <script src='<%= ResolveUrl("~/Scripts/bootbox.defaults.js")%>'></script>
-    
-    <link rel="shortcut icon" href="Images/favicon.png" type="image/png" />
-    
-   
 
+    <link rel="shortcut icon" href="Images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
 
 
@@ -184,7 +181,7 @@
                     <div class="col-md-2 text-right">
                         <div class="form-group" style="margin-top: 15px">
                             <label for=""></label>
-                            <input type="button" onclick="NovaOS();" value="Nova O.S"  />
+                            <input type="button" onclick="NovaOS();" value="Nova O.S" />
                         </div>
                     </div>
                 </div>
@@ -195,14 +192,14 @@
             <table id="tbResult" class="table table-striped table-condensed table-bordered table-hover" style="width: 100%" border="1" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
-                        <th style="width: 10%;text-align:center;">Id</th>
-                        <th style="width: 30%;text-align:center;">Contrato</th>
-                        <th style="width: 30%;text-align:center;">Cliente</th>
-                        <th style="width: 5%;text-align:center;">O.S</th>
-                        <th style="width: 5%;text-align:center;">Emitida</th>
-                        <th style="width: 5%;text-align:center;">Recebida</th>
-                        <th style="width: 10%;text-align:center;">Operador</th>
-                        <th style="width: 5%;text-align:center;">Situacao</th>
+                        <th style="width: 10%; text-align: center;">Id</th>
+                        <th style="width: 30%; text-align: center;">Contrato</th>
+                        <th style="width: 30%; text-align: center;">Cliente</th>
+                        <th style="width: 5%; text-align: center;">O.S</th>
+                        <th style="width: 5%; text-align: center;">Emitida</th>
+                        <th style="width: 5%; text-align: center;">Recebida</th>
+                        <th style="width: 10%; text-align: center;">Operador</th>
+                        <th style="width: 5%; text-align: center;">Situacao</th>
                     </tr>
                 </thead>
                 <tbody id="tBodyConsulta">
@@ -210,7 +207,7 @@
             </table>
         </div>
 
-         <a id="A2" href="#mAddPergunta" data-toggle="modal" data-backdrop="static" aria-expanded="false" aria-controls="collapseDados" runat="server" class="AbreModalAddPerg" />
+        <a id="A2" href="#mAddPergunta" data-toggle="modal" data-backdrop="static" aria-expanded="false" aria-controls="collapseDados" runat="server" class="AbreModalAddPerg" />
         <div class="modal modal2 fade bs-example-modal-lg " id="mAddPergunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -218,12 +215,50 @@
                         <asp:Button type="button" ID="btnFechaAddQuest" class="close" data-dismiss="modal" aria-label="Close" runat="server" Text="&times;"></asp:Button>
                         <h4 class="modal-title" id="H2">Cadastro de ordem de serviço</h4>
                     </div>
+
+                    <div class="modal-body row">
+                        <div class="col-md-12  col-xs-12">
+                            <div class="col-md-12  col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-6  col-xs-12">
+                                        <div class="form-group">
+                                            <label for="">Contrato</label>
+                                            <asp:DropdowControl class="form-control" ID="txtContrato" ClientIDMode="Static"></asp:DropdowControl>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6  col-xs-12">
+                                        <div class="form-group">
+                                            <label for="">Sequencial</label>
+                                            <asp:Label CssClass="form-control"   ID="lblSequencial" ClientIDMode="Static" runat="server" auto></asp:Label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6  col-xs-12">
+                                        <div class="form-group">
+                                            <label for="">Observação</label>
+                                            <asp:TextBox class="form-control" ID="txtObservacao" autocomplete="off" ClientIDMode="Static" Style="resize: none" TextMode="MultiLine" placeholder="" runat="server" Rows="8" MaxLength="500"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <asp:FileUpload ID="arquivo" ClientIDMode="Static" runat="server" Style="font-size: smaller; display: none" />
+                                    <div class="col-md-12 col-xs-12" style="text-align: right">
+                                        <div class="form-group">
+                                            <label for="">&nbsp;</label>
+                                            <br />
+                                            <input id="btnArquivo" type="button" value="Arquivo" class="btn btn-primary" onclick="$('#arquivo').click()" />
+                                            <input id="btnIniciar" type="button" value="Iniciar" class="btn btn-primary" onclick="Iniciar();" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
         </div>
-
-    </div>
-
-
-
 </asp:Content>
