@@ -6,15 +6,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
 
-
-    <script src='<%= ResolveUrl("~/Scripts/funcoes.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/jquery-ui-1.11.4.min.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.min.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.defaults.js")%>'></script>
-    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
-
-
-
     <script>
 
         var firebase;
@@ -55,8 +46,8 @@
             docContrato = firestore.collection("contratos");
             docEmpreendimento = firestore.collection("empreendimento_obra");
             carregarComboUnidades();
-         //   carregarComboContrato();
-          //  carregarComboObra();
+            carregarComboContrato();
+            carregarComboObra();
 
             CarregarPagina(docSolicitacao);
  
@@ -149,6 +140,7 @@
                         html += "    <td style='text-align:left;width: 5%;'>" + doc.data().dt_recepcao + "</td>";
                         html += "    <td style='text-align:left;width: 10%;'>" + doc.data().operador + "</td>";
                         html += "    <td style='text-align:left;width: 5%;'>" + doc.data().situacao + "</td>";
+                        html += "    <td style='text-align:left;width: 5%;'>" + doc.data().cod_medicao + "</td>";
                         html += "</tr>";
                     });
                     $("#tBodyConsulta").html(html);
@@ -161,7 +153,7 @@
         }
 
         function NovaOS() {
-            AbrirModal('AbreModalAddPerg');
+          AbrirModal('AbreModalAddPerg');
         }
 
         function Limpar() {
@@ -206,10 +198,6 @@
         }
 
         function carregarComboUnidades() {
-
-            var teste = firebase.firestore().collection('contratos').doc('documentID')
-            console.log(teste);
-
         }
 
 
@@ -238,6 +226,7 @@
                         <th style="width: 5%; text-align: center;">Recebida</th>
                         <th style="width: 10%; text-align: center;">Operador</th>
                         <th style="width: 5%; text-align: center;">Situacao</th>
+                        <th style="width: 5%; text-align: center;">Medicão</th>
                     </tr>
                 </thead>
                 <tbody id="tBodyConsulta">

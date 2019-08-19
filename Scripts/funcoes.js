@@ -214,7 +214,11 @@ function fnData(v) {
   return v
 }
 
-
+function fnCategoria(v) {
+    return v.replace(/[^\d+(\\d+?,)]?/g, "")
+  
+   
+}
 
 
 /*Função que padroniza hora*/
@@ -267,6 +271,7 @@ function mvalor(v) {
 
 
 
+
 /*Função que padroniza Area*/
 function fnArea(v) {
   v = v.replace(/\D/g, "")
@@ -293,7 +298,7 @@ function validaData(data) {
   var dia = pData[0];
   var mes = pData[1];
   var ano = pData[2];
-  if (!ano || !mes || !dia) return false;
+
   //Verifica se o ano está correto
   if (ano.length == 4 && ano > 1900 && ano < 2100) {
     // Verificando o intervalo permitido para os valores dos meses e dias
@@ -330,8 +335,6 @@ function validaData(data) {
   }
 }
 
-
-/********************* Fim Máscara com REGEX ********************/
 
 function ValidaCPF(cpf) {
   var Soma;
@@ -410,124 +413,3 @@ function ValidaCNPJ(cnpj) {
 
 }
 
-
-var tentativa = 1;
-
-function abrirPopUp(url, target, features) {
-    var janela = window.open(url, target, features);
-    if (janela == null) {
-        if (tentativa == 1) {
-            alert("Bloqueador de popup ativado. Desabilite para continuar.");
-            tentativa++;
-            return false;
-        } else if ((tentativa > 1) && (tentativa <= 3)) {
-            alert("Tentativa " + tentativa + " de 3: O bloqueador ainda está ativado.");
-            tentativa++;
-            return false;
-        } else if (tentativa > 3) {
-            alert("O bloqueio de PopUp esta ativo, para poder navegar no site normalmente por favor desbloquear!");
-            tentativa++;
-            return false;
-        }
-    } else {
-        return true;
-    }
-}
-
-
-function abrirProgress() {
-    $('#progressMaster').css('display', 'block');
-}
-
-function fecharProgress() {
-    $('#progressMaster').css('display', 'none');
-}
-
-function AbrirModal(pNomeClass) {
-    $('.' + pNomeClass).click();
-}
-
-function FechaModal(pNomeBotao) {
-    document.getElementById(pNomeBotao).click();
-}
-
-/*Number.prototype.display_hours_minutes = function () {
-    var remainder = this % 1;
-    var remainderTime = new Date(remainder * 3600 * 1000);
-    return ('0' + Math.floor(this)).slice(-2) + ':' + ('0' + remainderTime.getMinutes()).slice(-2) + ':' + ('0' + remainderTime.getSeconds()).slice(-2);
-};*/
-
-Number.prototype.display_minutes_seconds = function () {
-    var remainder = this % 1;
-    var remainderTime = new Date(remainder * 3600 * 1000);
-    return ((Math.floor(this) * 60) + remainderTime.getMinutes()) + ':' + ('0' + remainderTime.getSeconds()).slice(-2);
-};
-
-Number.prototype.display_minutes_round = function () {
-    var remainder = this % 1;
-    var remainderTime = new Date(remainder * 3600 * 1000);
-    var hor = (Math.floor(this) > 0 ? Math.floor(this).toString() + ' hr ' : '');
-    var min = (Math.round(remainderTime.getMinutes() + remainderTime.getSeconds() / 60)).toString() + ' min.';
-    return hor + min;
-};
-
-// USO: formateDateDDMMYYYY(convertStringToDate("<data formato dd/MM/yyyy>"))
-
-function convertStringToDate(str) {
-    var num = parseInt(str.replace(/[^0-9]/g, ""));
-    var date = new Date(num);
-
-    return date;
-}
-
-function formateDateDDMMYYYY(date) {
-    var dd = date.getDate();
-
-    var mm = date.getMonth() + 1;
-    var yyyy = date.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    return dd + '/' + mm + '/' + yyyy;
-}
-function checkTextAreaMaxLength(textBox, e, length) {
-
-    var mLen = textBox["MaxLength"];
-    if (null == mLen)
-        mLen = length;
-
-    var maxLength = parseInt(mLen);
-    if (!checkSpecialKeys(e)) {
-        if (textBox.value.length > maxLength - 1) {
-            if (window.event)//IE
-                e.returnValue = false;
-            else//Firefox
-                e.preventDefault();
-        }
-    }
-}
-
-function checkSpecialKeys(e) {
-    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-        return false;
-    else
-        return true;
-}
-
-
-function limitaTextarea(textBox, tam) {
-
-    quantidade = tam;
-    total = textBox.value.length;
-
-    if (total > quantidade) {
-
-        document.getElementById(textBox.id).value = textBox.value.substr(0, quantidade);
-
-    }
-
-}

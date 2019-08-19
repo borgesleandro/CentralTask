@@ -1,0 +1,68 @@
+﻿
+//----------------------------------------------------
+var RelOcorrencia = class {
+  constructor(Cia, Equipe, Regional, Gd, Setor, DataAte, DataDe, Uf, Bandeira, Cnpj, NomeCnpj, Produto, Sortimento, TipoOcorrencia, Situacao, Visao) {
+    this.Cia = Cia;
+    this.Equipe = Equipe;
+    this.Regional = Regional;
+    this.Gd = Gd;
+    this.Setor = Setor;
+    this.DataAte = DataAte;
+    this.DataDe = DataDe;
+    this.Uf = Uf;
+    this.Bandeira = Bandeira;
+    this.Cnpj = Cnpj;
+    this.NomeCnpj = NomeCnpj;
+    this.Produto = Produto;
+    this.Sortimento = Sortimento;
+    this.TipoOcorrencia = TipoOcorrencia;
+    this.Situacao = Situacao;
+    this.Visao = Visao;
+
+
+  }
+};
+
+function ConsultaRelOcorrencia() {
+  //  alert($("#<%=ddlCia.ClientID%>").val());
+  // alert($("#<%=ddlEquipe.ClientID%>").val());
+  var Cia = $("#<%=ddlCia.ClientID%>").val();
+  var Equipe = $("#<%=ddlEquipe.ClientID%>").val();
+  var Regional = $("#<%=ddlRegional.ClientID%>").val();
+  var Gd = $("#<%=ddlGD.ClientID%>").val();
+  var Setor = $("#<%=txtCodigoUsuario.ClientID%>").val();
+  var DataAte = $("#<%=txtDataAte.ClientID%>").val().substring(6, 10) + $("#<%=txtDataAte.ClientID%>").val().substring(3, 5) + $("#<%=txtDataAte.ClientID%>").val().substring(0, 2);
+  var DataDe = $("#<%=txtDataDe.ClientID%>").val().substring(6, 10) + $("#<%=txtDataDe.ClientID%>").val().substring(3, 5) + $("#<%=txtDataDe.ClientID%>").val().substring(0, 2);
+  var Uf = $("#<%=ddlUF.ClientID%>").val();
+  var Bandeira = $("#<%=ddlBandeira.ClientID%>").val();
+  var Cnpj = $("#<%=txtCnpj.ClientID%>").val();
+  var NomeCnpj = $("#<%=txtNomeCnpj.ClientID%>").val();
+  var Produto = $("#<%=ddlProduto.ClientID%>").val();
+  var Sortimento = $("#<%=ddlSortimento.ClientID%>").val();
+  var TipoOcorrencia = $("#<%=ddlTipoOcorrencia.ClientID%>").val();
+  var Situacao = $("#<%=ddlSituacao.ClientID%>").val();
+  var Visao = $("#<%=ddlVisao.ClientID%>").val();
+
+  var relOcorrencia = new RelOcorrencia(Cia, Equipe, Regional, Gd, Setor, DataAte, DataDe, Uf, Bandeira, Cnpj, NomeCnpj, Produto, Sortimento, TipoOcorrencia, Situacao, Visao)
+
+}
+
+//function ValidarPatologia(tipoOperacao) {
+//  var vTipoOperacao = tipoOperacao;
+//  var codigo = $("#txtCodigo").val();
+//  var descricao = $("#txtDescricao").val();
+
+//  if (codigo == "") {
+//    alert("É necessário informar o código.");
+//    $("#txtCodigo").focus();
+//    return false;
+//  }
+
+//  if (descricao == "") {
+//    alert("É necessário informar a descrição.");
+//    $("#txtDescricao").focus();
+//    return false;
+//  }
+
+//  return SalvarPatologia(vTipoOperacao);
+//}

@@ -13,10 +13,18 @@
     <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
+
+    <script src='<%= ResolveUrl("~/Scripts/funcoes.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/jquery-ui-1.11.4.min.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.min.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.defaults.js")%>'></script>
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
+
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
+
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
