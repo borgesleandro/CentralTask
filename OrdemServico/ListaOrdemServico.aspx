@@ -1,24 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaOrdemServico.aspx.cs" Inherits="CentralTask.OrdemServico.ListaOrdemServico" %>
 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src='<%= ResolveUrl("~/Scripts/funcoes.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/jquery-2.1.3.min.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.min.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.defaults.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/js/bootstrap.js")%>'></script>
-
-    <script src='<%= ResolveUrl("~/Scripts/bootbox.min.js")%>'></script>
-    <script src='<%= ResolveUrl("~/Scripts/bootbox.defaults.js")%>'></script>
-
-    <link rel="shortcut icon" href="Images/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
-
-
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+
+
+    <script src='<%= ResolveUrl("~/Scripts/funcoes.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/jquery-ui-1.11.4.min.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.min.js")%>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/datatable/jquery.dataTables.defaults.js")%>'></script>
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/themes/Bootstrap_RNN/css/estilos.css?cache=" + DateTime.Now.ToString("yyyyMMddHHmmss") )%>" />
+
+
 
     <script>
 
@@ -43,16 +38,29 @@
     <script type="text/javascript">
 
         var db;
-        var tableLayout;
-        var docRef;
+        var table;
+        var docSolicitacao;
+        var docMedicao;
+        var docContrato;
+        var docEmpreendimento;
+        var docUnidades;
 
         const firestore = firebase.firestore();
         const settings = {/* your settings... */ timestampsInSnapshots: true };
         firestore.settings(settings);
 
         $(document).ready(function () {
-            docRef = firestore.collection("solicitacao");
-            CarregarPagina(docRef);
+            docSolicitacao = firestore.collection("solicitacao");
+            docMedicao     = firestore.collection("medicao");
+            docContrato = firestore.collection("contratos");
+            docEmpreendimento = firestore.collection("empreendimento_obra");
+            carregarComboUnidades();
+         //   carregarComboContrato();
+          //  carregarComboObra();
+
+            CarregarPagina(docSolicitacao);
+ 
+            LayoutTabela();
         });
 
         function AbrirModal(pNomeClass) {
@@ -93,7 +101,7 @@
 
 
         function LayoutTabela() {
-            tableLayout = $("#tbResult").DataTable({
+            table = $("#tbResult").DataTable({
                 "sPaginationType": "full_numbers",
                 "bPaginate": true,
                 "bAutoWidth": false,
@@ -129,7 +137,7 @@
                 .get()
                 .then(snapshot => {
                     snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data());
+ //                       console.log(doc.id, '=>', doc.data());
 
                         var style = "";
                         html += "<tr>";
@@ -149,16 +157,58 @@
                     console.log('Error getting documents', err);
                 });
 
-            LayoutTabela();
+
         }
 
         function NovaOS() {
             AbrirModal('AbreModalAddPerg');
         }
 
-
         function Limpar() {
+        }
 
+        function carregarComboContrato() {
+            //CONTRATO
+            var combo = $("#<%=ddlContrato.ClientID %>");
+            combo.empty();
+            combo.append("<option value=''></option>")
+
+            var allContratos = docContrato
+                .get()
+                .then(snapshot => {
+                    snapshot.forEach(doc => {
+                        console.log(doc.id, '=>', doc.data());
+                        combo.append("<option value='" + doc.data().number + "'>" + "CT/" + doc.data().number + "</option>")
+                    });
+                })
+                .catch(err => {
+                    console.log('Error getting documents', err);
+                });
+        }
+
+        function carregarComboObra() {
+            //EMPREENDIMENTO
+            var comboObra = $("#<%=ddlEmpreendimentoObra.ClientID %>");
+            comboObra.empty();
+            comboObra.append("<option value=''></option>")
+
+            var allObra = docEmpreendimento
+                .get()
+                .then(snapshot => {
+                    snapshot.forEach(docObra => {
+                        console.log(docObra.id, '=>', docObra.data());
+                        comboObra.append("<option value='" + docObra.data().id + "'>" + docObra.data().name + "</option>")
+                    });
+                })
+                .catch(err => {
+                    console.log('Error getting documents', err);
+                });
+        }
+
+        function carregarComboUnidades() {
+
+            var teste = firebase.firestore().collection('contratos').doc('documentID')
+            console.log(teste);
 
         }
 
@@ -167,29 +217,17 @@
 
     <!--Filtros-->
     <div class="container" style="margin-top: 20px">
-        <div class="col-md-12 col-xs-12">
-            <div class="well">
-                <div class="row">
 
-                    <asp:HiddenField ID="txtIDProduto" ClientIDMode="Static" runat="server" Value="" />
-                    <div class="col-md-8 col-xs-12">
-                        <div class="form-group">
-                            <label for="">Código</label>
-                            <asp:TextBox runat="server" class="form-control" ID="txtCodigo" AutoPostBack="false" MaxLength="20"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="col-md-2 text-right">
-                        <div class="form-group" style="margin-top: 15px">
-                            <label for=""></label>
-                            <input type="button" onclick="NovaOS();" value="Nova O.S" />
-                        </div>
-                    </div>
-                </div>
+       <div class="col-md-12 col-xs-12" style="text-align: right">
+            <div class="form-group">
+                <label for="">&nbsp;</label>
+                <input type="button" onclick="NovaOS();" value="Nova O.S" />
             </div>
         </div>
+
         <!--Grid-->
         <div class="col-md-12 col-xs-12" id="divrolagem">
-            <table id="tbResult" class="table table-striped table-condensed table-bordered table-hover" style="width: 100%" border="1" cellspacing="0" cellpadding="0">
+            <table id="tbResult" class="table table-striped table-condensed table-bordered table-hover" style="width: 100%" border="1">
                 <thead>
                     <tr>
                         <th style="width: 10%; text-align: center;">Id</th>
@@ -213,52 +251,95 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <asp:Button type="button" ID="btnFechaAddQuest" class="close" data-dismiss="modal" aria-label="Close" runat="server" Text="&times;"></asp:Button>
-                        <h4 class="modal-title" id="H2">Cadastro de ordem de serviço</h4>
+                        <h4 class="modal-title" id="H2">Cadastro de Ordem de Serviço</h4>
                     </div>
-
                     <div class="modal-body row">
-                        <div class="col-md-12  col-xs-12">
-                            <div class="col-md-12  col-xs-12">
-                                <div class="row">
-                                    <div class="col-md-6  col-xs-12">
-                                        <div class="form-group">
-                                            <label for="">Contrato</label>
-                                            <asp:DropdowControl class="form-control" ID="txtContrato" ClientIDMode="Static"></asp:DropdowControl>
-                                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="">Sequencial</label>
+                                        <asp:Label CssClass="form-control" ID="lblSequencial" ClientIDMode="Static" runat="server"></asp:Label>
                                     </div>
-                                    <div class="col-md-6  col-xs-12">
-                                        <div class="form-group">
-                                            <label for="">Sequencial</label>
-                                            <asp:Label CssClass="form-control"   ID="lblSequencial" ClientIDMode="Static" runat="server" auto></asp:Label>
-                                        </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label for="">Contrato</label>
+                                        <asp:DropDownList ID="ddlContrato" CssClass="form-control" ClientIDMode="Static" runat="server">
+                                        </asp:DropDownList>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Obra</label>
+                                         <asp:DropDownList ID="ddlEmpreendimentoObra" CssClass="form-control" ClientIDMode="Static" runat="server">
+                                        </asp:DropDownList>                                    
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6  col-xs-12">
-                                        <div class="form-group">
-                                            <label for="">Observação</label>
-                                            <asp:TextBox class="form-control" ID="txtObservacao" autocomplete="off" ClientIDMode="Static" Style="resize: none" TextMode="MultiLine" placeholder="" runat="server" Rows="8" MaxLength="500"></asp:TextBox>
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <asp:FileUpload ID="arquivo" ClientIDMode="Static" runat="server" Style="font-size: smaller; display: none" />
-                                    <div class="col-md-12 col-xs-12" style="text-align: right">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">O.S</label>
+                                        <asp:Label CssClass="form-control" ID="lblOs" ClientIDMode="Static" placeholder="O.S" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Unidade</label>
+                                        <asp:TextBox CssClass="form-control" ID="txtUnidade" ClientIDMode="Static" placeholder="Unidade" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Local/Setor</label>
+                                        <asp:TextBox CssClass="form-control" ID="txtLocalsetor" ClientIDMode="Static" placeholder="Local/Setor" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Solicitante</label>
+                                        <asp:TextBox CssClass="form-control" ID="txtSolicitante" ClientIDMode="Static" placeholder="Solicitante" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Telefone</label>
+                                        <asp:TextBox CssClass="form-control" ID="txtTelefone" ClientIDMode="Static" placeholder="Telefone" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="">&nbsp;</label>
-                                            <br />
-                                            <input id="btnArquivo" type="button" value="Arquivo" class="btn btn-primary" onclick="$('#arquivo').click()" />
-                                            <input id="btnIniciar" type="button" value="Iniciar" class="btn btn-primary" onclick="Iniciar();" />
+                                            <label for="">Data</label>
+                                            <asp:TextBox CssClass="form-control" ID="txtData" ClientIDMode="Static" placeholder="Data" runat="server"></asp:TextBox>
                                         </div>
+                                    </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Hora </label>
+                                        <asp:TextBox CssClass="form-control" ID="txtHora" ClientIDMode="Static" placeholder="Hora" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12" style="text-align: right">
+                                    <div class="form-group">
+                                        <label for="">&nbsp;</label>
+                                        <input id="btnSalvar" type="button" value="Salvar" class="btn btn-primary" onclick="$('#arquivo').click()" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
 </asp:Content>

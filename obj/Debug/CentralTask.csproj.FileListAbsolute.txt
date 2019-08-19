@@ -66,8 +66,8 @@ D:\Projetos\CentralTask\bin\Microsoft.AspNet.FriendlyUrls.xml
 D:\Projetos\CentralTask\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Projetos\CentralTask\bin\pt-br\System.Web.Optimization.resources.dll
 D:\Projetos\CentralTask\bin\pt-br\Microsoft.AspNet.FriendlyUrls.resources.dll
-D:\Projetos\CentralTask\obj\Debug\CentralTask.csprojAssemblyReference.cache
 D:\Projetos\CentralTask\obj\Debug\CentralTask.csproj.CoreCompileInputs.cache
 D:\Projetos\CentralTask\obj\Debug\CentralTask.csproj.CopyComplete
 D:\Projetos\CentralTask\obj\Debug\CentralTask.dll
 D:\Projetos\CentralTask\obj\Debug\CentralTask.pdb
+D:\Projetos\CentralTask\obj\Debug\CentralTask.csprojAssemblyReference.cache

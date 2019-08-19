@@ -13,24 +13,6 @@ namespace CentralTask.OrdemServico {
     public partial class ListaOrdemServico {
         
         /// <summary>
-        /// Controle txtIDProduto.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtIDProduto;
-        
-        /// <summary>
-        /// Controle txtCodigo.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigo;
-        
-        /// <summary>
         /// Controle A2.
         /// </summary>
         /// <remarks>
@@ -58,21 +40,84 @@ namespace CentralTask.OrdemServico {
         protected global::System.Web.UI.WebControls.Label lblSequencial;
         
         /// <summary>
-        /// Controle txtObservacao.
+        /// Controle ddlContrato.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservacao;
+        protected global::System.Web.UI.WebControls.DropDownList ddlContrato;
         
         /// <summary>
-        /// Controle arquivo.
+        /// Controle ddlEmpreendimentoObra.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload arquivo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmpreendimentoObra;
+        
+        /// <summary>
+        /// Controle lblOs.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOs;
+        
+        /// <summary>
+        /// Controle txtUnidade.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUnidade;
+        
+        /// <summary>
+        /// Controle txtLocalsetor.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLocalsetor;
+        
+        /// <summary>
+        /// Controle txtSolicitante.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSolicitante;
+        
+        /// <summary>
+        /// Controle txtTelefone.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefone;
+        
+        /// <summary>
+        /// Controle txtData.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtData;
+        
+        /// <summary>
+        /// Controle txtHora.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHora;
     }
 }
